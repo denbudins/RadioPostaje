@@ -80,6 +80,7 @@ $db->zatvoriDB();
         <meta name="kljucne_rijeci" content="projekt, početna" />
         <meta name="datum_izrade" content="21.10.2019." />
         <meta name="autor" content="Denis Martin Budinski" />
+        <link rel="stylesheet" type="text/css" href="css/denbudins.css">
         <title>Prijava</title>
     </head>
     <body>

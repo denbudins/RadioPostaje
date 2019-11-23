@@ -23,6 +23,7 @@ if (isset($_SESSION["korisnik"])) {
         <meta name="kljucne_rijeci" content="projekt, početna" />
         <meta name="datum_izrade" content="26.10.2019." />
         <meta name="autor" content="Denis Martin Budinski" />
+        <link rel="stylesheet" type="text/css" href="../css/denbudins.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -30,15 +31,13 @@ if (isset($_SESSION["korisnik"])) {
     </head>
     <body>
         <header>
-            <a id="odjava" href="odjava.php">Odjava</a>
             <section>
                 <nav>
-                    <ul>
-                        <li><a href="index.php">Naslovna</a></li>
-                        <li><a href="indexAdmin.php">Pogled admina</a></li>
-                        <li><a href="mod/index.php">Pogled moderatora</a></li>
-                        <li><a href="usr/index.php">Pogled korisnika</a></li>
-                    </ul>
+                        <a href="index.php">Naslovna</a>
+                        <a href="indexAdmin.php">Pogled admina</a>
+                        <a href="mod/index.php">Pogled moderatora</a>
+                        <a href="usr/index.php">Pogled korisnika</a>
+                        <a id="odjava" href="odjava.php">Odjava</a>
                 </nav>
         </header>
     </body>

@@ -97,6 +97,7 @@ $db->zatvoriDB();
         <meta name="kljucne_rijeci" content="projekt, početna, radio postaje, registracija" />
         <meta name="datum_izrade" content="18.10.2019." />
         <meta name="autor" content="Denis Martin Budinski" />
+        <link rel="stylesheet" type="text/css" href="css/denbudins.css">
         <title>Registracija</title>
     </head>
     <body>

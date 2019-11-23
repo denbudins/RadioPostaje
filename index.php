@@ -24,6 +24,7 @@ if (isset($_SESSION["korisnik"])) {
         <meta name="kljucne_rijeci" content="projekt, početna, radio postaje" />
         <meta name="datum_izrade" content="17.10.2019." />
         <meta name="autor" content="Denis Martin Budinski" />
+        <link rel="stylesheet" type="text/css" href="css/denbudins.css">
         <title>Naslovnica</title>
     </head>
     <body>

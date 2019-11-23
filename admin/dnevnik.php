@@ -40,6 +40,7 @@ $db->zatvoriDB();
         <meta name="kljucne_rijeci" content="projekt, početna" />
         <meta name="datum_izrade" content="28.10.2019." />
         <meta name="autor" content="Denis Martin Budinski" />
+        <link rel="stylesheet" type="text/css" href="../css/denbudins.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/jq-2.1.4,dt-1.10.10/datatables.min.css"/>
         <script type="text/javascript" src="https://cdn.datatables.net/s/dt/jq-2.1.4,dt-1.10.10/datatables.min.js"></script>
@@ -56,11 +57,12 @@ $db->zatvoriDB();
     <?php
         include("zaglavlje.php");
     ?>
-        <table id="tablica" class="display" style="width:90%">
+    <p style="padding-top: 1%;"></p>
+        <table id="tablica" class="display">
             <?php
             echo $head;
             ?>
-            <tbody style="text-align: center">
+            <tbody>
                 <?php
                 echo $table;
                 ?>
