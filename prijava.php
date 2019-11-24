@@ -49,7 +49,7 @@ if(isset($_POST["submit"])) {
         $timestamp = date("Y-m-d H:i:s");
         $akcija = "Prijava";
         $opis = "Korisnik " . $korisnickoIme . " se prijavio";
-        $sql_dnevnik = "INSERT INTO `dnevnik`(`akcija`, `datumVrijeme`, `opis`) VALUES('" . $akcija . "', '" . $timestamp . "', '" . $opis . "')";
+        $sql_dnevnik = "INSERT INTO `dnevnik`(`skripta`, `vrijeme`, `opis`) VALUES('" . $akcija . "', '" . $timestamp . "', '" . $opis . "')";
         $insert = $db->selectDB($sql_dnevnik);
         header("Location: index.php");
     }
