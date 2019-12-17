@@ -95,7 +95,7 @@ if(isset($_POST["submit"])) {
         </header>
         <form class="form-login" id="noviOglas" method="POST" action="#file" enctype="multipart/form-data">
                     <div class="form-row">
-                        <input type="hidden" id="sifraVrste" name="sifraVrste" value="<?php echo$idVrste; ?>"
+                        <input type="hidden" id="sifraVrste" name="sifraVrste" value="<?php echo$idVrste; ?>">
                     </div>
                     <div class="form-row">
                         <h4>Pjesma:</h4>
@@ -109,6 +109,6 @@ if(isset($_POST["submit"])) {
                         <input id="submit" class="button" type="submit" name="submit" value="POŠALJI ZAHTJEV"/>
                     </div>
         </form>
-
+    <a href="novaPjesma.php">Predloži novu pjesmu</a>
     </body>
 </html>
