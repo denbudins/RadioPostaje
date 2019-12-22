@@ -19,6 +19,7 @@ if (isset($_SESSION["korisnik"])) {
 $korisnickoIme = "";
 $lozinka = "";
 $ulogaId = "";
+$korisnikId = "";
 $tipKorisnika = "";
 $brojGresaka = "";
 $kontrola = 0;
@@ -34,6 +35,7 @@ if(isset($_POST["submit"])) {
     if(mysqli_num_rows($korisnik) > 0) {
         while($row = $korisnik->fetch_assoc()) {
             $ulogaId = $row["tipkorisnika_idtipkorisnika"];
+            $korisnikId = $row["idkorisnici"];
         }
         if($ulogaId == '1') {
             $tipKorisnika = "Registriran korisnik";
@@ -44,7 +46,7 @@ if(isset($_POST["submit"])) {
         if($ulogaId == '3') {
             $tipKorisnika = "Administrator";
         }
-        Sesija::kreirajKorisnika($korisnickoIme, $tipKorisnika, '1');
+        Sesija::kreirajKorisnika($korisnickoIme, $tipKorisnika, '1', $korisnikId);
         setcookie('Prijava', $korisnickoIme, time()+3600);
         $timestamp = date("Y-m-d H:i:s");
         $akcija = "Prijava";

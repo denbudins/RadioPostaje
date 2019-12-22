@@ -34,6 +34,7 @@ class Sesija {
     const SESSION_NAME = "prijava_sesija";
     const TIP = "uloga";
     const ULOGIRAN = "ulogiran";
+    const IDKORISNIK = "idkorisnik";
 
     static function kreirajSesiju() {
         session_name(self::SESSION_NAME);
@@ -43,11 +44,12 @@ class Sesija {
         }
     }
 
-    static function kreirajKorisnika($korisnik,$uloga,$ulogiran) {
+    static function kreirajKorisnika($korisnik,$uloga,$ulogiran, $idkorisnik) {
         self::kreirajSesiju();
         $_SESSION[self::KORISNIK] = $korisnik;
         $_SESSION[self::TIP] = $uloga;
         $_SESSION[self::ULOGIRAN] = $ulogiran;
+        $_SESSION[self::IDKORISNIK] = $idkorisnik;
     }
 
     static function dajKorisnika() {

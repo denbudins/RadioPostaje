@@ -65,7 +65,7 @@ if(isset($_POST["submit"])) {
         $kriptiranaLozinka = sha1($sol . "--" . $lozinka1);
         $opisAkcije = "Korisnik " . $korisnickoIme . " se registrirao";
         $datumRegistracije = date("Y-m-d H:i:s");
-        $sql_novi_korisnik = "INSERT INTO `korisnici`(`username`, `email`, `lozinka`, `ime`, `prezime`, `tipkorisnika_idtipkorisnika`, `status`) VALUES('" . $korisnickoIme . "', '" . $email . "', '" . $lozinka1 . "', '" . $ime . "', '" . $prezime . "', '1', '0')";
+        $sql_novi_korisnik = "INSERT INTO `korisnici`(`username`, `email`, `lozinka`, `ime`, `prezime`, `tipkorisnika_idtipkorisnika`, `status`, `brojGresaka`) VALUES('" . $korisnickoIme . "', '" . $email . "', '" . $lozinka1 . "', '" . $ime . "', '" . $prezime . "', '1', '0', '0')";
         $zapisivanjeNovogKorisnika = $db->selectDB($sql_novi_korisnik);
         $sql_dnevnik = "INSERT INTO `dnevnik`(`skripta`, `vrijeme`, `opis`) VALUES('Registracija', '" . $datumRegistracije . "', '" . $opisAkcije . "')";
         $dnevnikZapis = $db->selectDB($sql_dnevnik);
