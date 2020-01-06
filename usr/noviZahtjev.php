@@ -28,14 +28,14 @@ while ($row = mysqli_fetch_array($pjesme)) {
 }
 $selected1 .= "</select>";
 
-$sql_upit_termin = "SELECT terminiemitiranja.idterminiemitiranja, terminiemitiranja.naziv FROM terminiemitiranja";
-$termin = $db->selectDB($sql_upit_termin);
-$selected2 = "<select id='termin' name='termin'>";
-while ($row = mysqli_fetch_array($termin)) {
+$sql_upit_radio_postaja = "SELECT idradiopostaje, naziv FROM radiopostaje";
+$radioPostaja = $db->selectDB($sql_upit_radio_postaja);
+$selected3 = "<select id='postaja' name='postaja'>";
+while ($row = mysqli_fetch_array($radioPostaja)) {
     $prikaz = $row['naziv'];
-    $selected2 .= "<option value='" . $row['idterminiemitiranja'] . "'>" . $prikaz . "</option>";
+    $selected3 .= "<option value='" . $row['idradiopostaje'] . "'>" . $prikaz . "</option>";
 }
-$selected2 .= "</select>";
+$selected3 .= "</select>";
 
 $sql_upit_korisnik = "SELECT * FROM korisnici WHERE username LIKE '" . $_SESSION["korisnik"] . "'";
 $korisnik = $db->selectDB($sql_upit_korisnik);
@@ -85,6 +85,12 @@ if(isset($_POST["submit"])) {
         <meta name="datum_izrade" content="24.11.2019." />
         <meta name="autor" content="Denis Martin Budinski" />
         <link rel="stylesheet" type="text/css" href="../css/denbudins.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/jq-2.1.4,dt-1.10.10/datatables.min.css"/>
+        <script type="text/javascript" src="https://cdn.datatables.net/s/dt/jq-2.1.4,dt-1.10.10/datatables.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="../js/denbudins.js"></script>
         <title>Novi zahtjev za glazbenom željom</title>
     </head>
     <body>
@@ -102,8 +108,12 @@ if(isset($_POST["submit"])) {
                         <?php echo$selected1; ?>
                     </div>
                     <div class="form-row">
+                        <h4>Radio postaja:</h4>
+                        <?php echo$selected3; ?>
+                    </div>
+                    <div class="form-row">
                         <h4>Termin emitiranja:</h4>
-                        <?php echo$selected2; ?>
+                        <selected id=termini></selected>
                     </div>
                     <div class="form-row">
                         <input id="submit" class="button" type="submit" name="submit" value="POŠALJI ZAHTJEV"/>
