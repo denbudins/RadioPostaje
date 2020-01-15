@@ -82,9 +82,9 @@ $db->zatvoriDB();
         include("zaglavlje.php");
     ?>
         <div id="greske">
-            <?php if($kontrola === 1) echo("<h4>Moderator već dodijeljen tom hotelu</h4><br>"); ?>
+            <?php if($kontrola === 1) echo("<h4>Moderator već dodijeljen toj radio postaji</h4><br>"); ?>
         </div>
-        <form class="form-login" id="noviHotel" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+        <form class="form-login" id="noviModerator" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
             <div class="form-log-in-with-email">
                 <div class="form-white-background">
                     <div class="form-title-row">
