@@ -28,7 +28,7 @@ $sql_upit_korisnik = "SELECT * FROM korisnici WHERE idkorisnici LIKE '" . $idKor
 $korisnik = $db->selectDB($sql_upit_korisnik);
 if (mysqli_num_rows($korisnik) > 0) {
     if ($akcija == '1') {
-        $sql_otkljucavanje_korisnika = "UPDATE korisnici SET status = '1' WHERE idkorisnici LIKE '" . $idKorisnika . "'";
+        $sql_otkljucavanje_korisnika = "UPDATE korisnici SET status = '1', brojGresaka = '0' WHERE idkorisnici LIKE '" . $idKorisnika . "'";
         $otkljucanKorisnik = $db->selectDB($sql_otkljucavanje_korisnika);
         $datum = date("Y-m-d H:i:s");
         $sql_dnevnik = "INSERT INTO `dnevnik`(`skripta`, `vrijeme`, `opis`) VALUES('Otključavanje računa', '" . $datum . "', '" . $_SESSION["korisnik"] . " je otključao račun " . $idKorisnika . "')";
@@ -36,7 +36,7 @@ if (mysqli_num_rows($korisnik) > 0) {
         header("Location: otkljucavanjeRacuna.php");
     }
     if ($akcija == '0') {
-        $sql_otkljucavanje_korisnika = "UPDATE korisnici SET status = '0' WHERE idkorisnici LIKE '" . $idKorisnika . "'";
+        $sql_otkljucavanje_korisnika = "UPDATE korisnici SET status = '2', brojGresaka = '3' WHERE idkorisnici LIKE '" . $idKorisnika . "'";
         $otkljucanKorisnik = $db->selectDB($sql_otkljucavanje_korisnika);
         $datum = date("Y-m-d H:i:s");
         $sql_dnevnik = "INSERT INTO `dnevnik`(`skripta`, `vrijeme`, `opis`) VALUES('Zaključavanje računa', '" . $datum . "', '" . $_SESSION["korisnik"] . " je zaključao račun " . $idKorisnika . "')";

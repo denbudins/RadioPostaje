@@ -19,7 +19,7 @@ $db->spojiDB();
 $sql_upit_dnevnik = "SELECT * FROM dnevnik";
 $dnevnik = $db->selectDB($sql_upit_dnevnik);
 
-$head = "<thead>" . "<tr>" . "<th>Akcija</th>" . "<th>Datum i vrijeme akcije</th>" . "<th>Opis akcije</th>" . "</tr>" . "</thead>";
+$head = "<thead class='table-section__zaglavlje'>" . "<tr>" . "<th>Akcija</th>" . "<th>Datum i vrijeme akcije</th>" . "<th>Opis akcije</th>" . "</tr>" . "</thead>";
 $table = "";
 
 while ($row = $dnevnik->fetch_assoc()) {
@@ -57,16 +57,19 @@ $db->zatvoriDB();
     <?php
         include("zaglavlje.php");
     ?>
-    <p style="padding-top: 1%;"></p>
-        <table id="tablica" class="display">
-            <?php
-            echo $head;
-            ?>
-            <tbody>
-                <?php
-                echo $table;
-                ?>
-            </tbody>
-        </table>
+    <main>
+        <section class="table-section table-section_margin">
+                <table id="tablica" class="display">
+                    <?php
+                    echo $head;
+                    ?>
+                    <tbody class="table-section__tjelo">
+                        <?php
+                        echo $table;
+                        ?>
+                    </tbody>
+                </table>
+        </section>
+    </main>
     </body>
 </html>

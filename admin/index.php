@@ -31,13 +31,13 @@ if (isset($_SESSION["korisnik"])) {
     </head>
     <body>
         <header>
-            <section>
-                <nav>
-                        <a href="index.php">Naslovna</a>
-                        <a href="indexAdmin.php">Pogled admina</a>
-                        <a href="mod/index.php">Pogled moderatora</a>
-                        <a href="usr/index.php">Pogled korisnika</a>
-                        <a id="odjava" href="odjava.php">Odjava</a>
+            <section class="header">
+                <nav class="navigacija">
+                        <a href="index.php" class="navigacija__link">Naslovna</a>
+                        <a href="indexAdmin.php" class="navigacija__link">Pogled admina</a>
+                        <a href="mod/index.php" class="navigacija__link">Pogled moderatora</a>
+                        <a href="usr/index.php" class="navigacija__link">Pogled korisnika</a>
+                        <a id="odjava" href="odjava.php" class="navigacija__link">Odjava</a>
                 </nav>
         </header>
     </body>

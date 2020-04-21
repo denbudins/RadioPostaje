@@ -1,13 +1,16 @@
 <?php
 echo'<header>
-<section>
-    <nav>
-    <a href="index.php">Naslovna</a>
-    <a href="noviZahtjev.php">Nova glazbena želja</a>
-    <a href="novaPjesma.php">Nova pjesma</a>
-    <a href="pregledZahtjeva.php">Pregled zahtjeva</a>
-    <a href="glasnja.php">Glasanje za pjesmu</a>
-    <a id="odjava" href="odjava.php">Odjava</a>
-    </nav>
+    <section class="header">
+        <nav class="navigacija">
+            <a href="index.php" class="navigacija__link">Naslovna</a>
+            <a href="noviZahtjev.php" class="navigacija__link">Nova glazbena želja</a>
+            <a href="novaPjesma.php" class="navigacija__link">Nova pjesma</a>
+            <a href="pregledZahtjeva.php" class="navigacija__link">Pregled zahtjeva</a>
+            <a href="glasnja.php" class="navigacija__link">Glasanje za pjesmu</a>
+            <a href="pregledKategorija.php" class="navigacija__link">Kategorija pjesama</a>
+            <a href="pregledePjesama.php" class="navigacija__link">Pjesama</a>
+            <a id="odjava" href="odjava.php" class="navigacija__link">Odjava</a>
+        </nav>
+    </section>
 </header>';
 ?>

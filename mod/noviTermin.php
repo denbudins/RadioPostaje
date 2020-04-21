@@ -21,7 +21,7 @@ $db->spojiDB();
 
 $sql_upit_moderatori = "SELECT t1.idradiopostaje, t1.naziv FROM radiopostaje t1 LEFT JOIN moderatori t2 ON t1.idradiopostaje = t2.radiopostaje_idradiopostaje WHERE t2.korisnici_idkorisnici = '" . $_SESSION["idkorisnik"]. "'";
 $moderatori = $db->selectDB($sql_upit_moderatori);
-$selected1 = "<select id='radiopostaje' name='radiopostaje'>";
+$selected1 = "<select id='radiopostaje' name='radiopostaje' class='selected-dodavanje'>";
 while ($row = mysqli_fetch_array($moderatori)) {
     $prikaz = $row['naziv'];
     $selected1 .= "<option value='" . $row['idradiopostaje'] . "'>" . $prikaz . "</option>";

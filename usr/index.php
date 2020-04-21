@@ -35,5 +35,12 @@ if (isset($_SESSION["korisnik"])) {
                 include("zaglavlje.php");
             ?>
         </header>
+        <main>
+            <h2 class="naslovna-text">Dobro došli u korisnički dio aplikacija!</h2>
+            <div class="naslovna-box">
+                <img src="../image/radio.jpg" alt="Ikona radija" class="naslovna-box__icon">
+                <h3 class="naslovna-text">Sa jednog mijesta utječite na program Vaših omiljnih radio postaja.</h3>
+            </div>   
+        </main>
     </body>
 </html>

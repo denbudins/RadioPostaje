@@ -31,12 +31,14 @@ if (isset($_SESSION["korisnik"])) {
     </head>
     <body>
         <header>
-            <section>
-                <nav>
-                        <a href="index.php">Naslovna</a>
-                        <a href="indexMod.php">Pogled moderatora</a>
-                        <a href="usr/index.php">Pogled korisnika</a>
-                        <a id="odjava" href="odjava.php">Odjava</a>
+            <section class="header">
+                <nav class="navigacija">
+                    <a href="index.php" class="navigacija__link">Naslovna</a>
+                    <a href="indexMod.php" class="navigacija__link">Pogled moderatora</a>
+                    <a href="usr/index.php" class="navigacija__link">Pogled korisnika</a>
+                    <a href="pregledKategorija.php" class="navigacija__link">Kategorija pjesama</a>
+                    <a href="pregledePjesama.php" class="navigacija__link">Pjesama</a>
+                    <a id="odjava" href="odjava.php" class="navigacija__link">Odjava</a>
                 </nav>
         </header>
     </body>

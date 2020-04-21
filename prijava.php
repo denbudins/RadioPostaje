@@ -30,13 +30,15 @@ if(isset($_POST["submit"])) {
     $korisnickoIme = $_POST["korIme"];
     $lozinka = $_POST["lozinka"];
     
-    $sql_korisnik = "SELECT * FROM korisnici WHERE username LIKE '" . $korisnickoIme . "' AND lozinka LIKE '" . $lozinka . "'";
+    $sql_korisnik = "SELECT * FROM korisnici WHERE username LIKE '" . $korisnickoIme . "' AND lozinka LIKE '" . $lozinka . "' AND brojGresaka < '3'";
     $korisnik = $db->selectDB($sql_korisnik);
     if(mysqli_num_rows($korisnik) > 0) {
         while($row = $korisnik->fetch_assoc()) {
             $ulogaId = $row["tipkorisnika_idtipkorisnika"];
             $korisnikId = $row["idkorisnici"];
+            $status = $row["status"];
         }
+        if($status == '1'){
         if($ulogaId == '1') {
             $tipKorisnika = "Registriran korisnik";
         }
@@ -54,16 +56,19 @@ if(isset($_POST["submit"])) {
         $sql_dnevnik = "INSERT INTO `dnevnik`(`skripta`, `vrijeme`, `opis`) VALUES('" . $akcija . "', '" . $timestamp . "', '" . $opis . "')";
         $insert = $db->selectDB($sql_dnevnik);
         header("Location: index.php");
+    }else{
+        $message = "Vaš račun još nije aktiviran. Provjerite svoju e-poštu.";
+        echo "<script type='text/javascript'>alert('$message');</script>";
     }
-    else {
-        $sql_upit_greske = "SELECT * FROM korisnik WHERE korisnicko_ime LIKE '" . $korisnickoIme . "' AND tip_korisnika_ID_tip_korisnika NOT LIKE '4'";
+    }else {
+        $sql_upit_greske = "SELECT * FROM korisnici WHERE username LIKE '" . $korisnickoIme . "' AND tipkorisnika_idtipkorisnika NOT LIKE '3'";
         $rezultat = $db->selectDB($sql_upit_greske);
         if(mysqli_num_rows($rezultat) > 0) {
             while($row = $rezultat->fetch_assoc()) {
                 $brojGresaka = $row["brojGresaka"];
             }
             $brojGresaka = $brojGresaka + 1;
-            $sql_pogresna_prijava = "UPDATE korisnik SET brojGresaka = '" . $brojGresaka . "' WHERE korisnicko_ime LIKE '" . $korisnickoIme . "'";
+            $sql_pogresna_prijava = "UPDATE korisnici SET brojGresaka = '" . $brojGresaka . "', status = '2' WHERE username LIKE '" . $korisnickoIme . "'";
             $izmjena = $db->selectDB($sql_pogresna_prijava);
             $kontrola = 1;
         }
@@ -95,24 +100,21 @@ $db->zatvoriDB();
             <?php if($kontrola === 1) echo("<h4>Pogrešna prijava</h4><br>"); ?>
         </div>
         <form class="form-login" id="prijava" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-            <div class="form-log-in-with-email">
-                <div class="form-white-background">
-                    <div class="form-title-row">
-                        <h1>Prijava</h1>
-                    </div>
-                    <div class="form-row">
-                        <input id="korIme" type="text" name="korIme" placeholder="Korisničko ime"/>
-                    </div>
-                    <div class="form-row">
-                        <input id="lozinka" type="password" name="lozinka" placeholder="Lozinka"/>
-                    </div>
-                    <div class="form-row">
-                        <input id="submit" class="button" type="submit" name="submit" value="PRIJAVA"/>
-                    </div>
-                    <a href="zabLozinka.php" class="form-forgotten-password">Zaboravljena lozinka? &middot;</a>
-                    <a href="registracija.php" class="form-create-an-account">Registriraj se &rarr;</a>
+            <div class="login-box">
+                <div class="login-box__naslov">
+                    <h3>Prijava</h3>
                 </div>
-
+                <div>
+                    <input id="korIme" type="text" name="korIme" placeholder="Korisničko ime"/>
+                </div>
+                <div>
+                    <input id="lozinka" type="password" name="lozinka" placeholder="Lozinka"/>
+                </div>
+                <div>
+                    <input id="submit" class="button" type="submit" name="submit" value="PRIJAVA"/>
+                </div>
+                <a href="zabLozinka.php" class="login-box__link">Zaboravljena lozinka?</a>
+                <a href="registracija.php" class="login-box__link">Registriraj se &rarr;</a>
             </div>
         </form>
 

@@ -25,10 +25,10 @@ if(isset($_GET["korIme"]) && isset($_GET["kod"])) {
     $korisnickoIme = $_GET["korIme"];
     $aktivacijskiKod = $_GET["kod"];
     
-    $sql_upit_korisnika = "SELECT * FROM korisnik WHERE korisnicko_ime LIKE '" . $korisnickoIme . "' AND kriptiranaLozinka LIKE '" . $aktivacijskiKod . "'";
+    $sql_upit_korisnika = "SELECT * FROM korisnici WHERE username LIKE '" . $korisnickoIme . "' AND kriptiranaLozinka LIKE '" . $aktivacijskiKod . "'";
     $rezultatProvjere = $db->selectDB($sql_upit_korisnika);
     if(mysqli_num_rows($rezultatProvjere) > 0) { //Uspjesna aktivacija
-        $sql_aktivacija_racuna = "UPDATE korisnik SET status = '1' WHERE korisnicko_ime LIKE '" . $korisnickoIme . "'";
+        $sql_aktivacija_racuna = "UPDATE korisnici SET status = '1' WHERE username LIKE '" . $korisnickoIme . "'";
         $aktivacija = $db->selectDB($sql_aktivacija_racuna);
         header("Location: prijava.php");
     }

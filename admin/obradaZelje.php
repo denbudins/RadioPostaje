@@ -25,9 +25,7 @@ if (isset($_GET["id"]) && isset($_GET["akcija"])) {
 }
 
 if ($akcija == '1') {
-    $sql_status_zahtjeva = "UPDATE zahtjevi SET tipovizahtjeva_idtipovizahtjeva = '1' WHERE idzahtjevi = '" . $idZahtjeva . "'";
-    $promjeniStatusZahtjeva = $db->selectDB($sql_status_zahtjeva);
-    $sql_nadi_zahtjev = "SELECT * FROM zahtjevi WHERE tipovizahtjeva_idtipovizahtjeva = '1' AND status = '0'";
+    $sql_nadi_zahtjev = "SELECT * FROM zahtjevi WHERE idzahtjevi = '" . $idZahtjeva . "'";
     $zahtjevi = $db->selectDB($sql_nadi_zahtjev);
     if (mysqli_num_rows($zahtjevi) > 0) {
         while ($row = $zahtjevi->fetch_assoc()) {
@@ -46,13 +44,15 @@ if ($akcija == '1') {
             $idPjesme = $row["idpjesme"];
         }
     }
+    $sql_status_zahtjeva = "UPDATE zahtjevi SET tipovizahtjeva_idtipovizahtjeva = '1', `idPjesme` = '" . $idPjesme . "' =  WHERE idzahtjevi = '" . $idZahtjeva . "'";
+    $promjeniStatusZahtjeva = $db->selectDB($sql_status_zahtjeva);
     $datum = date("Y-m-d H:i:s");
     $sql_dnevnik = "INSERT INTO `dnevnik`(`skripta`, `vrijeme`, `opis`) VALUES('Odobren zahtjev za novom pjesmom', '" . $datum . "', 'Zahtjev " . $idZahtjeva . " je odobren od administratora')";
     $noviZapis = $db->selectDB($sql_dnevnik);
     header("Location: povezivanjeKategorijeSaPjesmom.php?id='" . $idPjesme  . "'");
 }
 if ($akcija == '2') {
-    $sql_status_zahtjeva = "UPDATE zahtjevi SET tipovizahtjeva_idtipovizahtjeva = '3' WHERE idzahtjevi = '" . $idZahtjeva . "'";
+    $sql_status_zahtjeva = "UPDATE zahtjevi SET status = '3' WHERE idzahtjevi = '" . $idZahtjeva . "'";
     $promjeniStatusZahtjeva = $db->selectDB($sql_status_zahtjeva);
     $datum = date("Y-m-d H:i:s");
     $sql_dnevnik = "INSERT INTO `dnevnik`(`skripta`, `vrijeme`, `opis`) VALUES('Odbijen zahtjev za novom pjesmom', '" . $datum . "', 'Zahtjev " . $idZahtjeva . " je odbijen od administratora')";

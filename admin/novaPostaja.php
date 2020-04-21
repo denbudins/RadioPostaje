@@ -104,7 +104,7 @@ $db->zatvoriDB();
                     <div class="form-row">
                         <input id="submit" class="button" type="submit" name="submit" value="KREIRAJ"/>
                     </div>
-                    <a href="dodavanjeModeratora.php" class="form-create-an-account">Već kreiran radio postaja? Dodaj moderatora &rarr;</a>
+                    <a href="dodavanjeModeratora.php" class="login-box__link">Već kreiran radio postaja? Dodaj moderatora &rarr;</a>
                 </div>
 
             </div>

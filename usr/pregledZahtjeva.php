@@ -19,7 +19,7 @@ $db->spojiDB();
 $sql_upit_dnevnik = "SELECT * FROM zahtjevi WHERE korisnici_idkorisnici = '" . $_SESSION["idkorisnik"] . "'";
 $dnevnik = $db->selectDB($sql_upit_dnevnik);
 
-$head = "<thead>" . "<tr>" . "<th>Oznaka zahtjeva</th>" . "<th>Naziv kategorije</th>" . "<th>Opis kategorije</th>" . "<th>Status zahtjeva</th>" . "</tr>" . "</thead>";
+$head = "<thead class='table-section__zaglavlje'>" . "<tr>" . "<th>Oznaka zahtjeva</th>" . "<th>Naziv kategorije</th>" . "<th>Opis kategorije</th>" . "<th>Status zahtjeva</th>" . "</tr>" . "</thead>";
 $table = "";
 
 while ($row = $dnevnik->fetch_assoc()) {
@@ -44,6 +44,17 @@ while ($row = $dnevnik->fetch_assoc()) {
         $table = $table . "<td>" . $row["idzahtjevi"] . "</td>" . "<td>" . $row["naziv"] . "</td>" . "<td>" . $row["opis"] . "</td>" . "<td>" . $status;
         $table = $table . "</tr>"; 
     }
+    else if($row["status"] == 4){
+        $status = "Odobrena pjesma";
+        $table = $table . "<tr>";
+        $table = $table . "<td>" . $row["idzahtjevi"] . "</td>" . "<td>" . $row["naziv"] . "</td>" . "<td>" . $row["opis"] . "</td>" . "<td>" . $status;
+        $table = $table . "</tr>"; 
+    }else if($row["status"] == 5){
+        $status = "Pjesma dodana u termin emitiranja";
+        $table = $table . "<tr>";
+        $table = $table . "<td>" . $row["idzahtjevi"] . "</td>" . "<td>" . $row["naziv"] . "</td>" . "<td>" . $row["opis"] . "</td>" . "<td>" . $status;
+        $table = $table . "</tr>"; 
+    }
 }
 
 $db->zatvoriDB();
@@ -62,6 +73,7 @@ $db->zatvoriDB();
         <link rel="stylesheet" type="text/css" href="../css/denbudins.css">
         <script type="text/javascript" src="https://cdn.datatables.net/s/dt/jq-2.1.4,dt-1.10.10/datatables.min.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script type="text/javascript" src="http://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -74,16 +86,19 @@ $db->zatvoriDB();
         <?php
             include("zaglavlje.php");
         ?>
-        <p style="padding-top: 1%;"></p>
-        <table id="tablica" class="display">
-            <?php
-            echo $head;
-            ?>
-            <tbody style="text-align: center">
-                <?php
-                echo $table;
-                ?>
-            </tbody>
-        </table>
+        <main>
+            <section class="table-section table-section_margin">
+                <table id="tablica" class="display">
+                    <?php
+                    echo $head;
+                    ?>
+                    <tbody class="table-section__tjelo">
+                        <?php
+                        echo $table;
+                        ?>
+                    </tbody>
+                </table>
+            </section>
+        </main>
     </body>
 </html>

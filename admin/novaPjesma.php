@@ -18,12 +18,12 @@ $db->spojiDB();
 
 $sql_upit_korisnici = "SELECT * FROM zahtjevi WHERE tipovizahtjeva_idtipovizahtjeva = '2' AND status = '0'";
 $korisnici = $db->selectDB($sql_upit_korisnici);
-$head = "<thead>" . "<tr>" . "<th>Naziv pjesme</th>" . "<th>Opis pjesme</th>". "<th>Odobri zahtjev za pjesmu</th>" . "<th>Odbij zahtjev za pjesmu</th>" . "</tr>" . "</thead>";
+$head = "<thead class='table-section__zaglavlje'>" . "<tr>" . "<th>Naziv pjesme</th>" . "<th>Odobri zahtjev za pjesmu</th>" . "<th>Odbij zahtjev za pjesmu</th>" . "</tr>" . "</thead>";
 $table = "";
 
 while ($row = $korisnici->fetch_assoc()) {
     $table = $table . "<tr>";
-        $table = $table . "<td>" . $row["naziv"] . "</td>" . "<td>" . $row["opis"] . "</td>" . "<td><a href='obradaZelje.php?id=" . $row["idzahtjevi"] . "&akcija=1'>ODOBRI</a></td>" . "<td><a href='obradaZelje.php?id=" . $row["idzahtjevi"] . "&akcija=2'>ODBIJ</a></td>";
+        $table = $table . "<td>" . $row["naziv"] . "</td>" . "<td><a href='obradaZelje.php?id=" . $row["idzahtjevi"] . "&akcija=1'>ODOBRI</a></td>" . "<td><a href='obradaZelje.php?id=" . $row["idzahtjevi"] . "&akcija=2'>ODBIJ</a></td>";
     $table = $table . "</tr>";
 }
 
@@ -56,16 +56,19 @@ $db->zatvoriDB();
     <?php
         include("zaglavlje.php");
     ?>
-    <p style="padding-top: 1%;"></p>
-        <table id="tablica" class="display">
-            <?php
-            echo $head;
-            ?>
-            <tbody  >
-                <?php
-                echo $table;
-                ?>
-            </tbody>
-        </table>
+    <main>
+            <section class="table-section table-section_margin">
+                <table id="tablica" class="display">
+                    <?php
+                    echo $head;
+                    ?>
+                    <tbody class="table-section__tjelo">
+                        <?php
+                        echo $table;
+                        ?>
+                    </tbody>
+                </table>
+            </section>
+        </main>
     </body>
 </html>

@@ -17,9 +17,13 @@ if (isset($_SESSION["korisnik"])) {
 $db = new Baza();
 $db->spojiDB();
 
+if (isset($_GET["id"])) {
+    $idPjesma = $_GET["id"];
+}
+
 $sql_upit_radio_postaje = "SELECT * FROM kategorijepjesama WHERE status = 1";
 $radio_postaje = $db->selectDB($sql_upit_radio_postaje);
-$selected1 = "<select id='kategorija' name='kategorija'>";
+$selected1 = "<select id='kategorija' name='kategorija' class='selected-dodavanje'>";
 while ($row = mysqli_fetch_array($radio_postaje)) {
     $prikaz = $row['naziv'];
     $selected1 .= "<option value='" . $row['idkategorijepjesama'] . "'>" . $prikaz . "</option>";
@@ -30,8 +34,7 @@ if (isset($_POST["submit"])) {
     $idPjesme = $_POST["pjesma"];
     $idKategorije = $_POST["kategorija"];
     $datum = date("Y-m-d H:i:s");
-
-    $sql_kategorija_pjesme = "INSERT INTO `pjesme_kategorije`(`pjesme_idpjesme`, `kategorijepjesama_idkategorijepjesama`) VALUES('" . $idPjesme . "', '" . $idKategorije . "')";
+    $sql_kategorija_pjesme = "INSERT INTO `pjesme_kategorije`(`pjesme_idpjesme`, `kategorijepjesama_idkategorijepjesama`) VALUES(" . $idPjesme . ", '" . $idKategorije . "')";
     $unosKategorije = $db->selectDB($sql_kategorija_pjesme);
     $sql_dnevnik = "INSERT INTO `dnevnik`(`skripta`, `vrijeme`, `opis`) VALUES('Dodjeljena kategorija pjesmi', '" . $datum . "', 'Dodjeljena kategorija ". $idKategorije." pjesmi " . $idPjesme . "')";
     $noviZapis = $db->selectDB($sql_dnevnik);
@@ -69,11 +72,9 @@ $db->zatvoriDB();
                         <h4>Kategorija pjesme:</h4>
                         <?php echo$selected1;?>
                     </div>
-                    <input name="pjesma" type="hidden" id="pjesma" value="<?php 
-                    if (isset($_GET["id"])) {
-                        $idPjesma = $_GET["id"];
-                    }
-                    echo $idPjesma; ?>">
+                    <input name="pjesma" hidden id="pjesma" value="<?php 
+                        echo $idPjesma
+                    ?>">
                     <div class="form-row">
                         <input id="submit" class="button" type="submit" name="submit" value="Dodaj kategoriju"/>
                     </div>

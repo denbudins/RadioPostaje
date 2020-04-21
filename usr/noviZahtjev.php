@@ -21,7 +21,7 @@ $db->spojiDB();
 
 $sql_upit_pjesme = "SELECT pjesme.idpjesme, pjesme.naziv FROM pjesme";
 $pjesme = $db->selectDB($sql_upit_pjesme);
-$selected1 = "<select id='pjesma' name='pjesma'>";
+$selected1 = "<select id='pjesma' name='pjesma' class='selected-dodavanje'>";
 while ($row = mysqli_fetch_array($pjesme)) {
     $prikaz = $row['naziv'];
     $selected1 .= "<option value='" . $row['idpjesme'] . "'>" . $prikaz . "</option>";
@@ -30,7 +30,7 @@ $selected1 .= "</select>";
 
 $sql_upit_radio_postaja = "SELECT idradiopostaje, naziv FROM radiopostaje";
 $radioPostaja = $db->selectDB($sql_upit_radio_postaja);
-$selected3 = "<select id='postaja' name='postaja'>";
+$selected3 = "<select id='postaja' class='selected-dodavanje' name='postaja'>";
 while ($row = mysqli_fetch_array($radioPostaja)) {
     $prikaz = $row['naziv'];
     $selected3 .= "<option value='" . $row['idradiopostaje'] . "'>" . $prikaz . "</option>";
@@ -65,13 +65,13 @@ if(isset($_POST["submit"])) {
     $datumZahtjeva = date("Y-m-d H:i:s");
     
     
-    $sql_novi_zahtjev = "INSERT INTO `zahtjevi`(`naziv`, `opis`, `trajanje`, `lokacija_zvuka`, `status`, `korisnici_idkorisnici`, `korisnici_tipkorisnika_idtipkorisnika`, `datumivrijeme`, `tipovizahtjeva_idtipovizahtjeva`) VALUES('" . $naziv . "', '" . $opis . "', '" . $trajanje . "', '" . $lokacijaZvuka . "', '0', '" . $idKorisnika . "', '" . $idTipKorisnika . "', '" . $datumZahtjeva . "', '1')";
+    $sql_novi_zahtjev = "INSERT INTO `zahtjevi`(`naziv`, `opis`, `trajanje`, `lokacija_zvuka`, `status`, `korisnici_idkorisnici`, `korisnici_tipkorisnika_idtipkorisnika`, `datumivrijeme`, `tipovizahtjeva_idtipovizahtjeva`, `idPjesme`, 	`terminiemitiranja_idterminiemitiranja`) VALUES('" . $naziv . "', '" . $opis . "', '" . $trajanje . "', '" . $lokacijaZvuka . "', '0', '" . $idKorisnika . "', '" . $idTipKorisnika . "', '" . $datumZahtjeva . "', '1', '" . $idPjesma . "', '".$idTermina."')";
     $noviZahtjev = $db->selectDB($sql_novi_zahtjev);
     $sql_nova_pjesma_termin = "INSERT INTO `pjesme_terminiemitiranja`(`pjesme_idpjesme`, `terminiemitiranja_idterminiemitiranja`) VALUES('" . $idPjesma . "', '" . $idTermina . "')";
     $noviZahtjevTermin = $db->selectDB($sql_nova_pjesma_termin);
     $sql_dnevnik = "INSERT INTO `dnevnik`(`skripta`, `vrijeme`, `opis`) VALUES('Novi zahtjev ', '" . $datumZahtjeva . "', 'Podnesen zahtjev za novom glazbenom željom')";
     $noviZapis = $db->selectDB($sql_dnevnik);
-    header("Location: index.php");
+    //header("Location: index.php");
 } 
 ?>
 
@@ -100,25 +100,25 @@ if(isset($_POST["submit"])) {
             ?>
         </header>
         <form class="form-login" id="noviOglas" method="POST" action="#file" enctype="multipart/form-data">
-                    <div class="form-row">
+                    <div>
                         <input type="hidden" id="sifraVrste" name="sifraVrste" value="<?php echo$idVrste; ?>">
                     </div>
-                    <div class="form-row">
+                    <div>
                         <h4>Pjesma:</h4>
                         <?php echo$selected1; ?>
                     </div>
-                    <div class="form-row">
+                    <div>
                         <h4>Radio postaja:</h4>
                         <?php echo$selected3; ?>
                     </div>
-                    <div class="form-row">
+                    <div>
                         <h4>Termin emitiranja:</h4>
                         <selected id=termini></selected>
                     </div>
-                    <div class="form-row">
+                    <div>
                         <input id="submit" class="button" type="submit" name="submit" value="POŠALJI ZAHTJEV"/>
                     </div>
         </form>
-    <a href="novaPjesma.php">Predloži novu pjesmu</a>
+        <a href="novaPjesma.php" class="login-box__link">Predloži novu pjesmu</a>
     </body>
 </html>

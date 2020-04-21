@@ -18,16 +18,16 @@ $db->spojiDB();
 
 $sql_upit_korisnici = "SELECT * FROM korisnici WHERE tipkorisnika_idtipkorisnika NOT LIKE '3'";
 $korisnici = $db->selectDB($sql_upit_korisnici);
-$head = "<thead>" . "<tr>" . "<th>Ime i prezime</th>" . "<th>Email</th>" . "<th>Korisničko ime</th>" . "<th>Uloga</th>" . "<th>Dodaj moderatora</th>" . "<th>Oduzmi moderatora</th>" . "</tr>" . "</thead>";
+$head = "<thead class='table-section__zaglavlje'>" . "<tr>" . "<th>Ime i prezime</th>" . "<th>Korisničko ime</th>" . "<th>Uloga</th>" . "<th>Dodaj moderatora</th>" . "<th>Oduzmi moderatora</th>" . "</tr>" . "</thead>";
 $table = "";
 
 while ($row = $korisnici->fetch_assoc()) {
     $table = $table . "<tr>";
     if ($row["tipkorisnika_idtipkorisnika"] == '1') {
-        $table = $table . "<td>" . $row["ime"] . " " . $row["prezime"] . "</td>" . "<td>" . $row["email"] . "</td>" . "<td>" . $row["username"] . "</td>" . "<td>Registriran korisnik</td>" . "<td><a href='obradaKorisnika.php?id=" . $row["idkorisnici"] . "&akcija=2'>DAJ PRAVO MODERATORA</a></td>" . "<td><a href='obradaKorisnika.php?id=" . $row["idkorisnici"] . "&akcija=3'>ODUZMI PRAVO MODERATORA</a></td>";
+        $table = $table . "<td>" . $row["ime"] . " " . $row["prezime"] . "</td>" . "<td>" . $row["username"] . "</td>" . "<td>Registriran korisnik</td>" . "<td><a href='obradaKorisnika.php?id=" . $row["idkorisnici"] . "&akcija=2'>DAJ PRAVO MODERATORA</a></td>" . "<td><a href='obradaKorisnika.php?id=" . $row["idkorisnici"] . "&akcija=3'>ODUZMI PRAVO MODERATORA</a></td>";
     }
     if ($row["tipkorisnika_idtipkorisnika"] == '2') {
-        $table = $table . "<td>" . $row["ime"] . " " . $row["prezime"] . "</td>" . "<td>" . $row["email"] . "</td>" . "<td>" . $row["username"] . "</td>" . "<td>Moderator</td>" . "<td><a href='obradaKorisnika.php?id=" . $row["idkorisnici"] . "&akcija=2'>DAJ PRAVO MODERATORA</a></td>" . "<td><a href='obradaKorisnika.php?id=" . $row["idkorisnici"] . "&akcija=3'>ODUZMI PRAVO MODERATORA</a></td>";
+        $table = $table . "<td>" . $row["ime"] . " " . $row["prezime"] . "</td>" . "<td>" . $row["username"] . "</td>" . "<td>Moderator</td>" . "<td><a href='obradaKorisnika.php?id=" . $row["idkorisnici"] . "&akcija=2'>DAJ PRAVO MODERATORA</a></td>" . "<td><a href='obradaKorisnika.php?id=" . $row["idkorisnici"] . "&akcija=3'>ODUZMI PRAVO MODERATORA</a></td>";
     }
     $table = $table . "</tr>";
 }
@@ -61,16 +61,19 @@ $db->zatvoriDB();
     <?php
         include("zaglavlje.php");
     ?>
-    <p style="padding-top: 1%;"></p>
-        <table id="tablica" class="display">
-            <?php
-            echo $head;
-            ?>
-            <tbody  >
-                <?php
-                echo $table;
-                ?>
-            </tbody>
-        </table>
+    <main>
+            <section class="table-section table-section_margin">
+                <table id="tablica" class="display">
+                    <?php
+                    echo $head;
+                    ?>
+                    <tbody class="table-section__tjelo">
+                        <?php
+                        echo $table;
+                        ?>
+                    </tbody>
+                </table>
+            </section>
+        </main>
     </body>
 </html>

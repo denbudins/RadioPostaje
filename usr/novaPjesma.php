@@ -19,7 +19,7 @@ $db->spojiDB();
 
 $sql_upit_radio_postaja = "SELECT idradiopostaje, naziv FROM radiopostaje";
 $radioPostaja = $db->selectDB($sql_upit_radio_postaja);
-$selected3 = "<select id='postaja' name='postaja'>";
+$selected3 = "<select id='postaja' name='postaja' class='selected-dodavanje'>";
 while ($row = mysqli_fetch_array($radioPostaja)) {
     $prikaz = $row['naziv'];
     $selected3 .= "<option value='" . $row['idradiopostaje'] . "'>" . $prikaz . "</option>";

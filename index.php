@@ -25,11 +25,71 @@ if (isset($_SESSION["korisnik"])) {
         <meta name="datum_izrade" content="17.10.2019." />
         <meta name="autor" content="Denis Martin Budinski" />
         <link rel="stylesheet" type="text/css" href="css/denbudins.css">
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+        <script>
+            window.addEventListener("load", function () {
+                window.cookieconsent.initialise({
+                    "palette": {
+                        "popup": {
+                            "background": "#fde428",
+                            "text": "#002e5b"
+                        },
+                        "button": {
+                            "background": "#002e5b",
+                            "text": "#ffffff"
+                        }
+                    },
+                    "theme": "classic",
+                    "content": {
+                        "message": "Ova stranica koristi kolačiće kako bi vam osigurala što je moguće bolje iskustvo.",
+                        "dismiss": "Prihvaćam",
+                        "href": "http://barka.foi.hr/WebDiP/2018_projekti/WebDiP2018x018"
+                    }
+                })
+            });
+        </script>
         <title>Naslovnica</title>
     </head>
     <body>
         <?php
             include("zaglavlje.php");
         ?>
+        <main>
+            <section class="pocetna-main">
+                <h2 class="pocetna-main__naslov">Dobro došli na stranicu za <span>upravljanje radio postajama</span></h2>
+                <div class="box-korisnici">
+                    <h3 class="box-korisnici__naslov">Naši zadovoljni korisnici</h3>
+                    <div class="box-logo">
+                        <figure class="box-logo__slike">
+                            <img src="image/Narodni-main-logo.png" alt="Narodni radio">
+                            <figcaption>Narodni radio</figcaption>
+                        </figure>
+                        <figure class="box-logo__slike">
+                            <img src="image/antena.png" alt="Antena">
+                            <figcaption>Antena</figcaption>
+                        </figure>
+                        <figure class="box-logo__slike">
+                            <img src="image/otvoreni.jpg" alt="Otvoreni radio">
+                            <figcaption>Otvoreni radio</figcaption>
+                        </figure>
+                        <figure class="box-logo__slike">
+                            <img src="image/Radio_Krizevci.jpg" alt="Radio Križevci">
+                            <figcaption>Radio Križevci</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="stranica-footer">
+            <div class="stranica-footer__projekt">
+                <p>Autor projekta: <span>Denis Martin Budinski<span></p>
+                <p>Naziv projekta: <span>WebDiP 2018/2019 Radio postaje<span></p>
+            </div>
+            <div class="stranica-footer__linkovi">
+             <div><a href="">Dokumentacija projekta</a></div>
+             <div><a href="">O autoru</a></div> 
+            </div>
+        </footer>
     </body>
 </html>

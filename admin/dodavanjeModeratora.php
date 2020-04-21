@@ -18,7 +18,7 @@ $db->spojiDB();
 
 $sql_upit_radio_postaje = "SELECT * FROM radiopostaje";
 $radio_postaje = $db->selectDB($sql_upit_radio_postaje);
-$selected1 = "<select id='postaja' name='postaja'>";
+$selected1 = "<select id='postaja' name='postaja' class='selected-dodavanje'>";
 while ($row = mysqli_fetch_array($radio_postaje)) {
     $prikaz = $row['naziv'];
     $selected1 .= "<option value='" . $row['idradiopostaje'] . "'>" . $prikaz . "</option>";
@@ -27,7 +27,7 @@ $selected1 .= "</select>";
 
 $sql_upit_moderatori = "SELECT korisnici.idkorisnici, korisnici.ime, korisnici.prezime FROM korisnici WHERE tipkorisnika_idtipkorisnika LIKE '2'";
 $moderatori = $db->selectDB($sql_upit_moderatori);
-$selected2 = "<select id='mod' name='moderator'>";
+$selected2 = "<select id='mod' name='moderator' class='selected-dodavanje'>";
 while ($row = mysqli_fetch_array($moderatori)) {
     $prikaz = $row['ime'] . " " . $row["prezime"];
     $selected2 .= "<option value='" . $row['idkorisnici'] . "'>" . $prikaz . "</option>";
