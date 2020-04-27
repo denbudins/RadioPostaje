@@ -18,7 +18,7 @@ $db->spojiDB();
 
 $sql_upit_moderatori = "SELECT korisnici.idkorisnici, korisnici.ime, korisnici.prezime FROM korisnici WHERE tipkorisnika_idtipkorisnika LIKE '2'";
 $moderatori = $db->selectDB($sql_upit_moderatori);
-$selected1 = "<select id='mod' name='moderator'>";
+$selected1 = "<select id='mod' name='moderator' class='selected-dodavanje'>";
 while ($row = mysqli_fetch_array($moderatori)) {
     $prikaz = $row['ime'] . " " . $row["prezime"];
     $selected1 .= "<option value='" . $row['idkorisnici'] . "'>" . $prikaz . "</option>";

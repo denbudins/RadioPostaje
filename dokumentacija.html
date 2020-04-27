@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="hr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="naslov" content="Početna stranica" />
+        <meta name="kljucne_rijeci" content="projekt, početna, radio postaje" />
+        <meta name="datum_izrade" content="23.04.2020." />
+        <meta name="autor" content="Denis Martin Budinski" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/denbudins.css">
+        <title>Dokumentacija</title>
+    </head>
+    <body>
+        <header>
+            <section class="header">
+                <nav class="navigacija">
+                    <a href="index.php" class="navigacija__link">Naslovna</a>
+                    <a href="https://barka.foi.hr/WebDiP/2018_projekti/WebDiP2018x018/prijava.php" class="navigacija__link">Prijava</a>
+                    <a href="registracija.php" class="navigacija__link">Registracija</a>
+                    <a href="pregledKategorija.php" class="navigacija__link">Kategorija pjesama</a>
+                    <a href="pregledePjesama.php" class="navigacija__link">Pjesama</a>
+                </nav>
+            </section>
+        </header>
+        <main>
+            <section>
+                <div>
+                <h2>Opis projektnog zadatka</h2>
+                <p>Sustav omogućuje planiranje emitiranja glazbenih želja radio postaje.</p>
+                <h3>Uloge:</h3>
+                <ul>
+                    <li>Neregistrirani korisnik</li>
+                    <li>Registrirani korisnik</li>
+                    <li>Moderator / Voditelj radio stanice</li>
+                    <li>Administrator / Urednik radio stanice</li>
+                </ul>
+                <h3>Detaljne upute:</h3>
+                <h4>Administrator</h4>
+                <ul>
+                    <li>Kreira radio postaje (Otvoreni, Megaton, …) i dodjeljuje moderatore radio postaji.</li>
+                    <li>Kreira kategorije pjesama (rock, pop, jazz, ….), obavezno unosi naziv i opis.</li>
+                    <li>Odobrava ili odbija zahtjeve za dodavanjem nove pjesme. Pjesme koje odobri stavlja u neku
+                    kategoriju.</li>
+                    <li>Pregledava statistike zahtjeva za glazbenom željom (prihvaćenih/odbijenih) u nekom
+                    razdoblju uz mogućnost da se odabere postaja i onda se dobiju podaci po pjesmi.</li>
+                </ul>
+                <h4>Moderator</h4>
+                <ul>
+                    <li>Kreira termine emitiranja gdje navodi datum i vrijeme početka i završetka emitiranja.</li>
+                    <li>Pregledava i prihvaća/odbija zahtjeve za glazbenom željom korisnika. Prihvaćen/odbijen
+                    zahtjev za glazbenom željom ima datum i vrijeme prihvaćanja/odbijanja. Ne može odobriti
+                    zahtjev, ukoliko korisnik predlaže novu pjesmu, sve dok pjesmu ne odobri administrator.</li>
+                    <li>Dodaje pjesme u termin emitiranja iz popisa prihvaćenih glazbenih želja. Ukoliko ima više
+                    zahtjeva za istom pjesmom ona se u popisu prikazuje samo jednom. Pjesme se sortiraju</li>
+                    silazno prema broju glasova.
+                </ul>
+                <h4>Registrirani korisnik</h4>
+                <ul>
+                    <li>Kreira zahtjeve za glazbenom željom pri čemu obavezno odabire termin emitiranja, može
+                    odabrati postojeću pjesmu ili predlaže novu pjesmu. Ako predlaže novu pjesmu mora unijeti
+                    naziv, opis, trajanje pjesme (u sekundama) i postaviti zvuk, automatski se šalje zahtjev
+                    administratoru.</li>
+                    <li>Pregledava zahtjeve za glazbenom željom sa statusom (prihvaćena, odbijena od
+                    administratora, odbijena od moderatora).</li>
+                    <li>Vidi popis pjesama u listi za emitiranje i može glasovati za jednu pjesmu u jednom terminu
+                    sve do početka emitiranja.</li>
+                </ul>
+                <h4>Neregistrirani korisnik</h4>
+                <ul>
+                    <li>Može pretraživati pjesme uz mogućnost filtriranja po kategoriji pjesme. Svaki element ima
+                    dvije poveznice na kategoriju i pjesmu.</li>
+                    <li>Vidi informacije o pjesmi sa zvukom.</li>
+                    <li>Vidi informacije o kategoriji pjesme.</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Opis projektnog rješenja</h3>
+                <p>Projektno rješenje je napravljeno pomoću HTML-a, CSS-a, JavaScript-a i php-a, a baza podataka je MySQL.
+                    Rješenje ima četri tipa korisnika kako je i navedeno u projektnom zadatku. Aktivnosti neregistriranog korisnika se ne
+                    bilježe u bazu podataka. Kod prvog dolaska na stranicu korisnik dobiva obavjest o korištenju kolačića. Neregistrirani
+                    korisnik se može registrirati za daljnje korištenje aplikacije, može pregledavati kategorije pjesama i same pjesme koje
+                    se koriste u aplikaciji.</p>
+                    <p>Registrirani korisnik dobiva mogućnost davanja svojih prjedloga za nove pjesme koje bi želio da se koriste i uvrštavaju
+                    u programe radio postaja. On može predlagati pjesme koje će se puštati u nekom terminu i može glasati za svoju pjesmu 
+                    u nekom terminu.</p>
+                    <p>Registrirani korisnik može postati moderator neke radio postaje ako mu to pravo dodjeli administrator sustava, a to pravo
+                    mu moderator također može i oduzeti. Kada je korisnik postao moderator on za tu radio postaju može kreirati nove termine
+                    emitiranja. U te termine može dodavati pjesme za koje su korisnici poslali želje da ih se emitira i koje je moderator odobrio.
+                </p><p>
+                    Ukoliko je korisnik zatražio da se u termin doda neka nova pjesma koja još ne postoji u sustavu takvu pjesmu prije moderatora
+                    mora odbriti administrator. Sam administrator kreira nove radio postaje, kreira nove kategorije pjesama. On može pregledavati
+                    i logove sustava i što se konkretno na sustavu radilo i kada.
+                </p><p>
+                    Svaka viša uloga može raditi i sve ono što može na sustavu raditi i niža uloga. Tako moderator može raditi ono što
+                    može raditi registrirani korisnik, a administrator može raditi sve što mogu raditi registrirani korisnik i moderator.
+                    Svi mogu raditi ono što može raditi, odnosno pregledavati neregistrirani korisnik.
+                </p>
+            </div>
+            <div>
+                <h3>Bitne odrednice projektnog rješenja</h3>
+                <h4>Era model</h4>
+                <img src="image/eraModel.png" alt="ERA model projekta">
+            </div>
+            <div>
+                <h3>Popis i opis skripata</h3>
+                <ul>
+                    <li><b>zabLozinka.php</b> - Skripta za vraćanje lozinke registriranim korisnicima.</li>
+                    <li><b>prijava.php</b> - Skripta koja provjerava da li postoji korisnik i da li odgovara tom korisniku unesena lozinka.</li>
+                    <li><b>registracija.php</b> - Skripta koja omogućuje registraciju novih korisnika (pohrana podataka u bazu podataka)</li>
+                    <li><b>pregledPjesama.php</b> - Skripta koja dohvaća i prikazuje sve pjesme dostupne u sustavu</li>
+                    <li><b>pregledKategorija.php</b> - Skripta koja dohvaća i prikazuje sve kategorije pjesama dostupne u sustavu</li>
+                    <li><b>aktivacija.php</b> - Skripta koja aktivira korisnikov račun kako bi on mogao koristiti sustav</li>
+                    <li><b>davanjeGlasa.php</b> - Skripta koja obrađuje davanje glasa korisnika. Provjerava da li je korisnik u tom terminu već dao glas i ako nije bilježi njegov glas u bazu podataka</li>
+                    <li><b>dohvatiTermine.php</b> - Skripta koja dohvaća sve termine za odabranu radio postaju</li>
+                    <li><b>glasnja.php</b> - Skripta koja dohvaća i prikazuje sve pjesme prema radio postaji i terminu te omogućava davanje glasa nekoj od njih</li>
+                    <li><b>novaPjesama.php</b> - Skripta koja omogućava davanje zahtjeva za novom pjesmom u sustavu</li>
+                    <li><b>noviZahtjev.php</b> - Skripta koja omogućavanje predaju zahtjeva za dodavanjem pjesme u odabrani termin emitiranja za neku radio postaju</li>
+                    <li><b>odjava.php</b> - Skripta koja omogućava odjavu korisnika iz sustava</li>
+                    <li><b>pjesmeIzTermina.php</b> - Skripta koja dohvaća sve pjesme koje se nalaze u nekom terminu emitiranja</li>
+                    <li><b>pregledZahtjeva.php</b> - Skripta koja dohvaća i prikazuje sve zahtjeve korisnika i u kojem su statusu</li>
+                    <li><b>dodavanjePjesmeUTermin.php</b> - Skripta koja sprema podatke u pjesmi koja je dodana u neki termin emitiranja</li>
+                    <li><b>glazbeneZelje.php</b> - Skripta koja dohvaća i prikazuje sve glazbene želje koje mora moderator odobriti ili odbiti</li>
+                    <li><b>noviTermin.php</b> - Skripta koja omogućuje dodavanje novih termina za radio postaju</li>
+                    <li><b>obradaZelje.php</b> - Skripta koja omogućuje promjenu statusa želja. Ovisno da li je odbijena ili prihvaćena želja.</li>
+                    <li><b>pjesmeTerminEmitiranja.php</b> - Skripta koja dohvaća i prikazuje sve pjesme koje moderato može dodati u neki termin emitiranja</li>
+                    <li><b>dnevnik.php</b> - Skripta koja dohvaća i prikazuje sve logove sustava</li>
+                    <li><b>dodavanjeModeratora.php</b> - Skripta koja dohvaća i prikazuje sve korisnike koji su moderatori i dodjeljuje ga odabranoj radio postaju</li>
+                    <li><b>kateorije.php</b> - Skripta koja omogućuje dodavanje novih kategorija pjesama u sustav</li>
+                    <li><b>novaPostaja.php</b> - Skripta koja omogućava dodavanje nove radio postaje u sustav</li>
+                    <li><b>dnevnik.php</b> - Skripta koja dohvaća i prikazuje sve logove sustava</li>
+                    <li><b>noviModerator.php</b> - Skripta koja dohvaća i prikazuje sve registrirane korisnike i omogućva davanje odabranom korisniku prava moderatora ili mu ga se oduzima</li>
+                    <li><b>otkljucavanjeRacuna.php</b> - Skripta koja omogućava otključavanje računa korisnicima kojma je račun zaključan</li>
+                    <li><b>povezivanjeKategorijeSaPjesmom.php</b> - Skripta koja omogućava da se pjesmi pridruži odabrana kategorija pjesme</li>
+                </ul>
+                <h3>Navigacijski dijagram</h3>
+                <img src="image/navigacijski_dijagram.png" alt="Navigacijski dijagram aplikacije">
+            </div>
+            <div>
+                <h3>Popis korištenih tehnologija</h3>
+                <ul>
+                    <li>HTML - prezentacija web stranice</li>
+                    <li>CSS - stilizacija web stranice</li>
+                    <li>JavaScript - validacije na strani klijenta</li>
+                    <li>php - validacije na strani servera, komunikacija sa bazom podataka</li>
+                    <li>MySql - pohrana podataka u bazu</li>
+                </ul>
+            </div>
+            </section>
+        </main>
+    </body>
+</html>

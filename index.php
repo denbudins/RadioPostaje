@@ -24,9 +24,9 @@ if (isset($_SESSION["korisnik"])) {
         <meta name="kljucne_rijeci" content="projekt, početna, radio postaje" />
         <meta name="datum_izrade" content="17.10.2019." />
         <meta name="autor" content="Denis Martin Budinski" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/denbudins.css">
-        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-        <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
         <script>
             window.addEventListener("load", function () {
                 window.cookieconsent.initialise({
@@ -87,8 +87,8 @@ if (isset($_SESSION["korisnik"])) {
                 <p>Naziv projekta: <span>WebDiP 2018/2019 Radio postaje<span></p>
             </div>
             <div class="stranica-footer__linkovi">
-             <div><a href="">Dokumentacija projekta</a></div>
-             <div><a href="">O autoru</a></div> 
+             <div><a href="dokumentacija.html">Dokumentacija projekta</a></div>
+             <div><a href="o_autoru.html">O autoru</a></div> 
             </div>
         </footer>
     </body>

@@ -1,6 +1,6 @@
 <?php
-include("../sesija.class.php");
-include("../baza.class.php");
+include("../../sesija.class.php");
+include("../../baza.class.php");
 
 Sesija::kreirajSesiju();
 
@@ -16,17 +16,18 @@ if (isset($_SESSION["korisnik"])) {
 $db = new Baza();
 $db->spojiDB();
 
-$sql_upit_oglasi = "SELECT korisnici.ime, korisnici.prezime, zahtjevi.naziv, zahtjevi.opis, zahtjevi.status FROM korisnici, zahtjevi WHERE korisnici.idkorisnici LIKE zahtjevi.korisnici_idkorisnici";
-$oglasi = $db->selectDB($sql_upit_oglasi);
-
-$head = "<thead>" . "<tr>" . "<th>Naziv</th>" . "<th>Opis</th>" . "<th>Vlasnik oglasa</th>" . "<th>Status</th>" .  "</tr>" . "</thead>";
+$sql_upit_korisnici = "SELECT * FROM zahtjevi WHERE tipovizahtjeva_idtipovizahtjeva = '1' AND status = '0'";
+$korisnici = $db->selectDB($sql_upit_korisnici);
+$head = "<thead class='table-section__zaglavlje'>" . "<tr>" . "<th>Naziv pjesme</th>" . "<th>Opis pjesme</th>". "<th>Odobri zahtjev za pjesmu</th>" . "<th>Odbij zahtjev za pjesmu</th>" . "</tr>" . "</thead>";
 $table = "";
 
-while ($row = $oglasi->fetch_assoc()) {
+while ($row = $korisnici->fetch_assoc()) {
     $table = $table . "<tr>";
-    $table = $table . "<td>" . $row["naziv"] . "</td>" . "<td>" . $row["opis"] ."</td>" . "<td>" . $row["ime"] . " " . $row["prezime"] . "</td>" . "<td>" . $row["status"] . "</td>";
+        $table = $table . "<td>" . $row["naziv"] . "</td>" . "<td>" . $row["opis"] . "</td>" . "<td><a href='obradaZelje.php?id=" . $row["idzahtjevi"] . "&akcija=1'>ODOBRI</a></td>" . "<td><a href='obradaZelje.php?id=" . $row["idzahtjevi"] . "&akcija=2'>ODBIJ</a></td>";
     $table = $table . "</tr>";
 }
+
+$db->zatvoriDB();
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +37,9 @@ while ($row = $oglasi->fetch_assoc()) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="naslov" content="Početna stranica" />
         <meta name="kljucne_rijeci" content="projekt, početna" />
-        <meta name="datum_izrade" content="25.03.2020." />
+        <meta name="datum_izrade" content="17.12.2019." />
         <meta name="autor" content="Denis Martin Budinski" />
-        <link rel="stylesheet" type="text/css" href="../css/denbudins.css">
+        <link rel="stylesheet" type="text/css" href="../../css/denbudins.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/jq-2.1.4,dt-1.10.10/datatables.min.css"/>
         <script type="text/javascript" src="https://cdn.datatables.net/s/dt/jq-2.1.4,dt-1.10.10/datatables.min.js"></script>
@@ -49,21 +50,25 @@ while ($row = $oglasi->fetch_assoc()) {
                 $('#tablica').DataTable();
             });
         </script>
-        <title>Statistika klikova</title>
+        <title>Obrada zahtjeva za glazbenim željama</title>
     </head>
     <body>
     <?php
         include("zaglavlje.php");
     ?>
-        <table id="tablica" class="display" style="width:90%">
-            <?php
-            echo $head;
-            ?>
-            <tbody style="text-align: center">
+    <main>
+        <section class="table-section table-section_margin">
+            <table id="tablica" class="display">
                 <?php
-                echo $table;
+                echo $head;
                 ?>
-            </tbody>
-        </table>
+                <tbody  class="table-section__tjelo">
+                    <?php
+                    echo $table;
+                    ?>
+                </tbody>
+            </table>
+        </section>
+    <main>
     </body>
 </html>

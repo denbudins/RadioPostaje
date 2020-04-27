@@ -178,3 +178,203 @@ input[type=submit] {
 .naslovna-box__icon{
     width: 45%;
 }
+
+.indeks{
+    display: block;
+    max-width: 575px;
+    height: 650px;
+}
+
+
+
+.indeks img{
+    margin-left: 25%;
+}
+
+.indeks blockquote{
+    text-align: center;
+}
+
+@media screen and (min-width: 767px){
+    .navigacija{
+        max-width: 1000px;
+        height: 100px;
+    }
+
+    .box-korisnici{
+        max-width: 1000px;
+    }
+
+    .navigacija__link{
+        display: inline;
+        font-size: 20px;
+    }
+
+    .box-logo{
+        max-width: 1000px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+    }
+
+    .box-logo__slike{
+        max-width: 1000px;
+        height: 200px;
+    }
+
+    .box-logo__slike img{
+        height: 150px;
+    }
+
+    .stranica-footer{
+        max-width: 1000px;
+        height: 200px;
+    }
+
+    .stranica-footer__projekt{
+        font-size: 20px;
+    }
+
+    .stranica-footer__linkovi a{
+        font-size: 20px;
+    }
+
+    .login-box__link{
+        max-width: 1000px;
+    }
+
+    .table-section{
+        max-width: 1000px;
+    }
+    
+    .dataTables_length{
+        font-size: 20px; 
+    }
+    
+    .dataTables_filter{
+        font-size: 20px;  
+    }
+    
+    .dataTables_info{
+        font-size: 20px; 
+    }
+
+    .table-section__zaglavlje{
+        font-size: 15px;
+    }
+
+    .table-section__tjelo{
+        font-size: 15px;
+    }
+
+    .indeks{
+        max-width: 1000px;
+    }
+    
+    .indeks ol{
+        position: absolute;
+        top: 250px;
+        left: 150px;
+    }
+    
+    .indeks img{
+        position: absolute;
+        top: 165px;
+        left: 250px;
+    }
+    
+    .indeks blockquote{
+        position: absolute;
+        top: 450px;
+        left: 100px;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .navigacija{
+        max-width: 1600px;
+        height: 100px;
+    }
+
+    .box-korisnici{
+        max-width: 1600px;
+    }
+
+    .navigacija__link{
+        display: inline;
+        font-size: 20px;
+    }
+
+    .box-logo{
+        max-width: 1600px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+    }
+
+    .box-logo__slike{
+        max-width: 1600px;
+        height: 200px;
+    }
+
+    .box-logo__slike img{
+        height: 150px;
+    }
+
+    .stranica-footer{
+        max-width: 1600px;
+        height: 200px;
+    }
+
+    .stranica-footer__projekt{
+        font-size: 20px;
+    }
+
+    .stranica-footer__linkovi a{
+        font-size: 20px;
+    }
+
+    .login-box__link{
+        max-width: 1600px;
+    }
+
+    .naslovna-box__icon{
+        width: 25%;
+    }
+
+    .table-section{
+        max-width: 1600px;
+    }
+    
+    .dataTables_length{
+        font-size: 25px; 
+    }
+    
+    .dataTables_filter{
+        font-size: 25px;  
+    }
+    
+    .dataTables_info{
+        font-size: 25px; 
+    }
+
+    .table-section__zaglavlje{
+        font-size: 20px;
+    }
+
+    .table-section__tjelo{
+        font-size: 20px;
+    }
+
+    .indeks{
+        max-width: 1600px;
+    }
+    
+    .indeks ol{
+        left: 350px;
+    }
+    
+    .indeks img{
+        left: 400px;
+    }
+}
