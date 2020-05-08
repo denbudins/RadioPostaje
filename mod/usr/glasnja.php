@@ -48,7 +48,7 @@ $db->zatvoriDB();
         <script type="text/javascript" src="https://cdn.datatables.net/s/dt/jq-2.1.4,dt-1.10.10/datatables.min.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="../../js/denbudins.js"></script>
+        <script type="text/javascript" src="../js/denbudins.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#tablicaPjesama').DataTable();
@@ -74,7 +74,7 @@ $db->zatvoriDB();
                 <?php
                 echo $head;
                 ?>
-                <tbody  class="table-section__tjelo">
+                <tbody  class="table-section__tjelo" id="tjeloTablice">
                     <?php
                     echo $table;
                     ?>

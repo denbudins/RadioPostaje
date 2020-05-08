@@ -44,7 +44,7 @@ if ($akcija == '1') {
             $idPjesme = $row["idpjesme"];
         }
     }
-    $sql_status_zahtjeva = "UPDATE zahtjevi SET tipovizahtjeva_idtipovizahtjeva = '1', `idPjesme` = '" . $idPjesme . "' =  WHERE idzahtjevi = '" . $idZahtjeva . "'";
+    $sql_status_zahtjeva = "UPDATE zahtjevi SET tipovizahtjeva_idtipovizahtjeva = '1', `idPjesme` = '" . $idPjesme . "'  WHERE idzahtjevi = '" . $idZahtjeva . "'";
     $promjeniStatusZahtjeva = $db->selectDB($sql_status_zahtjeva);
     $datum = date("Y-m-d H:i:s");
     $sql_dnevnik = "INSERT INTO `dnevnik`(`skripta`, `vrijeme`, `opis`) VALUES('Odobren zahtjev za novom pjesmom', '" . $datum . "', 'Zahtjev " . $idZahtjeva . " je odobren od administratora')";

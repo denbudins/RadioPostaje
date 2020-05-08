@@ -44,7 +44,8 @@ if (isset($_SESSION["korisnik"])) {
                     "content": {
                         "message": "Ova stranica koristi kolačiće kako bi vam osigurala što je moguće bolje iskustvo.",
                         "dismiss": "Prihvaćam",
-                        "href": "http://barka.foi.hr/WebDiP/2018_projekti/WebDiP2018x018"
+                        "link": "Prihvaćam",
+                        "href": "http://barka.foi.hr/WebDiP/2018_projekti/WebDiP2018x018",
                     }
                 })
             });
@@ -83,8 +84,8 @@ if (isset($_SESSION["korisnik"])) {
         </main>
         <footer class="stranica-footer">
             <div class="stranica-footer__projekt">
-                <p>Autor projekta: <span>Denis Martin Budinski<span></p>
-                <p>Naziv projekta: <span>WebDiP 2018/2019 Radio postaje<span></p>
+                <p>Autor projekta: <span>Denis Martin Budinski</span></p>
+                <p>Naziv projekta: <span>WebDiP 2018/2019 Radio postaje</span></p>
             </div>
             <div class="stranica-footer__linkovi">
              <div><a href="dokumentacija.html">Dokumentacija projekta</a></div>

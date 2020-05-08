@@ -30,6 +30,7 @@ $sql_upit_korisnik = "SELECT * FROM korisnici WHERE username LIKE '" . $_SESSION
 $korisnik = $db->selectDB($sql_upit_korisnik);
 while ($row = $korisnik->fetch_assoc()) {
     $idKorisnika = $row["idkorisnici"];
+    $idTipKorisnika = $row["tipkorisnika_idtipkorisnika"];
 }
 
 $naziv = "";
@@ -46,7 +47,7 @@ if(isset($_POST["submit"])) {
     $trajanje = $_POST["trajanje"];
     $idTermina = $_POST["termin"]; 
     
-    $sql_novi_zahtjev = "INSERT INTO `zahtjevi`(`naziv`, `opis`, `trajanje`, `lokacija_zvuka`, `status`, `korisnici_idkorisnici`, `korisnici_tipkorisnika_idtipkorisnika`, `tipovizahtjeva_idtipovizahtjeva`, `terminiemitiranja_idterminiemitiranja`) VALUES('" . $naziv . "', '" . $opis . "', '" . $trajanje . "', '" . $url . "', '0', '" . $idKorisnika . "', '1', '2', '" . $idTermina . "')";
+    $sql_novi_zahtjev = "INSERT INTO `zahtjevi`(`naziv`, `opis`, `trajanje`, `lokacija_zvuka`, `status`, `korisnici_idkorisnici`, `korisnici_tipkorisnika_idtipkorisnika`, `tipovizahtjeva_idtipovizahtjeva`, `terminiemitiranja_idterminiemitiranja`) VALUES('" . $naziv . "', '" . $opis . "', '" . $trajanje . "', '" . $url . "', '0', '" . $idKorisnika . "', '" .$idTipKorisnika. "', '2', '" . $idTermina . "')";
     $noviZahtjev = $db->selectDB($sql_novi_zahtjev);
     $sql_dnevnik = "INSERT INTO `dnevnik`(`skripta`, `vrijeme`, `opis`) VALUES('Novi zahtjev', '" . $datumZahtjeva . "', 'Podnesen zahtjev za novom pjesmom')";
     $noviZapis = $db->selectDB($sql_dnevnik);
