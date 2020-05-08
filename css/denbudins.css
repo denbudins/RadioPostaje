@@ -64,7 +64,7 @@ body{
 
 .stranica-footer{
     display: block;
-    max-width: 575px;
+    width: 100%;
     background-color: #5f5d5d;
     height: 90px;
 }
